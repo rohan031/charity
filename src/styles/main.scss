@@ -1,0 +1,30 @@
+@use "./abstracts" as ab;
+@use "./components";
+
+
+body {
+    font-family: 'Raleway', sans-serif;
+    background-color: ab.$background-primary;
+    overflow-x: hidden;
+    color: ab.$text-primary;
+}
+
+.wrapper {
+    position: relative;
+    overflow-y: scroll;
+    height: 100vh;
+
+    .wrapper.active {
+        overflow-y: hidden;
+    }
+}
+
+
+.title {
+    font-family: 'Satisfy', cursive;
+}
+
+.main {
+    outline: 2px solid coral;
+}
+

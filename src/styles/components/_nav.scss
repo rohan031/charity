@@ -1,0 +1,142 @@
+@use "../abstracts" as ab;
+
+.nav {
+    display: flex;
+    align-items: center;
+    width: min(95%, 110rem);
+    margin-inline: auto;
+    padding-block: 1.5em 0.5em;
+    padding-inline: 0.6em;
+    // position: relative;
+
+    &-title {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5em;
+
+        @include ab.screen-40 {
+            gap: 1.2em;
+        }
+
+        img {
+            width: 5rem;
+            position: relative;
+            z-index: 1;
+    
+            @include ab.screen-40 {
+                width: 6rem;
+            }
+        }
+    }
+    
+
+    &-links {
+        margin-left: auto;
+        padding-block: 0;
+
+        label {
+            color: ab.$button-background;
+            font-size: 2.2rem;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+
+            @include ab.screen-40{
+                display: none;
+            }
+        }
+
+        input[type="checkbox"] {
+            display: none;
+
+            &:checked + ul {
+                clip-path: inset(0);
+            }
+        } 
+        
+        &__ul {
+            position: absolute;
+            list-style: none;
+            padding: 0;
+            background-color: ab.$background-secondary;
+            color: ab.$text-secondary;
+            left: 0;
+            right: 0;
+            top: -5%;
+            
+            height: calc(100vh + 5%);
+
+            border-radius: 0.6em;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 3em;
+
+            clip-path: inset(0 0 0 100%);
+            transition: clip-path 0.4s;
+
+            @include ab.screen-40 {
+                position: static;
+                background-color: inherit;
+                flex-direction: row;
+                padding-block: 0.4em;
+                clip-path: inset(0);
+                padding-inline: 0.4em;
+                height: auto;
+                gap: 2em;
+                
+            }
+
+            &-link {
+                color: inherit;
+                user-select: none;
+
+                a {
+                    color: inherit;
+                    text-decoration: underline transparent;
+                    font-size: 1.5rem;
+                    transition: color 0.3s, text-decoration 0.3s;
+                    user-select: none;
+
+                    @include ab.screen-40 {
+                        font-size: 1rem;
+                    }
+
+                    @include ab.screen-50 {
+                        font-size: 1.3rem;
+                    }
+
+                    &:hover {
+                        text-decoration-color: ab.$button-background;
+                        color: ab.$button-background;
+
+                    }
+
+                    &:active {
+                        color: ab.$text-logo;
+                        text-decoration: ab.$text-logo;
+                    }
+                }
+            }
+
+            &-button {
+                user-select: none;
+
+                a {
+                    font-size: 1.5rem;
+                    user-select: none;
+
+                    @include ab.screen-40 {
+                        font-size: 1rem;
+                    }
+
+                    @include ab.screen-50 {
+                        font-size: 1.3rem;
+                    }
+                }
+            }
+        }
+    }
+}

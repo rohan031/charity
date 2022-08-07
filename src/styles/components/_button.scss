@@ -1,0 +1,26 @@
+@use "../abstracts" as ab;
+
+.button {
+    background-color: none;
+    padding-inline: 2em;
+    padding-block: 0.4em;
+    border-radius: 0.8em;
+
+    transition: background-color 0.3s;
+
+    &-primary {
+        background-color: ab.$button-background;
+        color: ab.$text-primary;
+
+        &:hover {
+            color: ab.$text-secondary;
+            background-color: lighten(ab.$button-background, 10);
+        }
+
+        &:active {
+            background-color: darken(ab.$button-background, 10);
+        }
+    }
+    
+}
+

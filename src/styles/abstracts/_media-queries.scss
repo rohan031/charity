@@ -1,0 +1,17 @@
+@mixin screen-40 {
+    @media (min-width: 40em) {
+        @content;
+    }
+}
+
+@mixin screen-62 {
+    @media (min-width: 62em) {
+        @content;
+    }
+}
+
+@mixin screen-50 {
+    @media (min-width: 50em) {
+        @content;
+    }
+}
