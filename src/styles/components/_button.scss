@@ -24,3 +24,16 @@
     
 }
 
+.link {
+    font-size: 1.4rem;
+    color: ab.$text-logo;
+    transition: color 0.3s;
+
+    &:hover {
+        color: lighten($color: ab.$text-logo, $amount: 10)
+    }
+
+    &:active {
+        color: darken(ab.$text-logo, 10);
+    }
+}

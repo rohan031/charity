@@ -15,3 +15,21 @@
         @content;
     }
 }
+
+@mixin screen-84 {
+    @media (min-width: 84em) {
+        @content;
+    }
+}
+
+@mixin screen-117 {
+    @media (min-width: 117em) {
+        @content;
+    }
+}
+
+@mixin screen-120 {
+    @media (min-width: 120.5em) {
+        @content;
+    }
+}

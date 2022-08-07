@@ -3,28 +3,30 @@
 
 
 body {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Poppins', sans-serif;
     background-color: ab.$background-primary;
-    overflow-x: hidden;
     color: ab.$text-primary;
 }
 
 .wrapper {
     position: relative;
-    overflow-y: scroll;
     height: 100vh;
 
-    .wrapper.active {
+    &.open {
         overflow-y: hidden;
+
+        @include ab.screen-40 {
+            overflow-y: scroll;
+        }
     }
 }
 
 
 .title {
-    font-family: 'Satisfy', cursive;
+    color: ab.$text-logo;
 }
 
 .main {
-    outline: 2px solid coral;
+    padding-block: 1em 4;
 }
 
