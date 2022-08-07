@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amrita Chander Jankalyan Charitable Trust</title>
 
-    <link rel="stylesheet" href="./styles/main.scss">
-    <script src="./scripts/index.js" defer></script>
-
     <!-- google fonts link -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,6 +13,14 @@
 
     <!-- font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- gsap animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js" integrity="sha512-VEBjfxWUOyzl0bAwh4gdLEaQyDYPvLrZql3pw1ifgb6fhEvZl9iDDehwHZ+dsMzA0Jfww8Xt7COSZuJ/slxc4Q==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+
+    <!-- script and css -->
+    <link rel="stylesheet" href="./styles/main.scss">
+    <script src="./scripts/index.js" defer></script>
+    <script src="./scripts/animation.js" defer></script>
 </head>
 <body>
 
@@ -38,19 +43,19 @@
                 <input id="toggle" type="checkbox">
 
                 <ul class="nav-links__ul">
-                    <li class="nav-links__ul-link">
+                    <li class="nav-links__ul-link nav-animate-items">
                         <a href="#">Home</a>
                     </li>
-                    <li class="nav-links__ul-link">
+                    <li class="nav-links__ul-link nav-animate-items">
                         <a href="#">Info</a>
                     </li>
-                    <li class="nav-links__ul-link">
+                    <li class="nav-links__ul-link nav-animate-items">
                         <a href="#">Gallery</a>
                     </li>
-                    <li class="nav-links__ul-link">
+                    <li class="nav-links__ul-link nav-animate-items">
                         <a href="#">Contact Us</a>
                     </li>
-                    <span class="nav-links__ul-button">
+                    <span class="nav-links__ul-button nav-animate-items">
                         <a href="#" class="button button-primary">Donate</a>
                     </span>
                 </ul>
