@@ -13,6 +13,8 @@ toggleSwitch.addEventListener("change", (e) => {
         label.innerHTML = '<i class="fa-solid fa-xmark"></i>';
         wrapper.classList.add("open");
 
+
+        // nav menu mobile animation
         gsap.from(".nav-animate-items", {
             x: 500, 
             opacity: 0,

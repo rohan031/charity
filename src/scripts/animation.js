@@ -1,3 +1,9 @@
+const target = document.querySelector(".causes-list");
+const listItems = document.querySelectorAll(".causes-list__item");
+let observer, media;
+
+
+// timeline for initial start animation
 let tl = gsap.timeline({
     defaults: {
         ease: "power3.out"
@@ -11,6 +17,72 @@ tl.from(".intro-image", {
 })
     .from(".intro-text", {
         opacity: 0,
-        duration: 1,
+        duration: 1.4,
         y: 300
-    }, "-=1.4")
+    }, "-=1.6")
+
+
+
+
+// intersection observer
+function animationBasedOnDevice(media, ob) {
+
+    ob?.disconnect();
+    
+    if(media.matches) {
+        const options = {
+            root: null, 
+            threshold: 0.4
+        };
+    
+        let observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    gsap.to(".causes-list__item", {
+                        x: 0, 
+                        opacity: 1, 
+                        duration: 1.4, 
+                        stagger: 0.4, 
+                        ease: "power4.out"
+                    });
+                }
+            })
+        }, options);
+
+        observer.observe(target); 
+        
+        return observer;
+    }
+
+    const options = {
+        root: null, 
+        threshold: 0.2
+    };
+
+
+    let observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                gsap.to(entry.target, {
+                    x: 0, 
+                    opacity: 1, 
+                    duration: 1, 
+                    ease: "power4.out"
+                });
+            }
+        })
+    }, options);
+
+    listItems.forEach(item => observer.observe(item));
+
+    return observer;
+}
+
+// media queries
+media = window.matchMedia("(min-width: 50em)");
+
+observer = animationBasedOnDevice(media);
+
+x.addEventListener("change", (e) => {
+    observer = animationBasedOnDevice(e.target, observer);
+})

@@ -85,8 +85,15 @@
                 clip-path: inset(0);
                 padding-inline: 0.4em;
                 height: auto;
-                gap: 2em;
-                
+                gap: 1.2em;
+            }
+
+            @include ab.screen-50 {
+                gap: 1.4em;
+            }
+
+            @include ab.screen-62 {
+                gap: 3em;
             }
 
             &-link {
@@ -101,10 +108,14 @@
                     user-select: none;
 
                     @include ab.screen-40 {
-                        font-size: 1rem;
+                        font-size: 0.9rem;
                     }
 
                     @include ab.screen-50 {
+                        font-size: 1.1rem;
+                    }
+
+                    @include ab.screen-62 {
                         font-size: 1.3rem;
                     }
 
@@ -117,6 +128,11 @@
                     &:active {
                         color: ab.$text-logo;
                         text-decoration: ab.$text-logo;
+                    }
+
+                    &.active {
+                        text-decoration-color: ab.$button-background;
+                        color: ab.$button-background;
                     }
                 }
             }
