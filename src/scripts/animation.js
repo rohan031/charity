@@ -1,5 +1,5 @@
-const target = document.querySelector(".causes-list");
-const listItems = document.querySelectorAll(".causes-list__item");
+const target = document.querySelector(".animate-list");
+const listItems = document.querySelectorAll(".animate-list__item");
 let observer, media;
 
 
@@ -29,30 +29,30 @@ function animationBasedOnDevice(media, ob) {
 
     ob?.disconnect();
     
-    if(media.matches) {
-        const options = {
-            root: null, 
-            threshold: 0.4
-        };
-    
-        let observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    gsap.to(".causes-list__item", {
-                        x: 0, 
-                        opacity: 1, 
-                        duration: 1.4, 
-                        stagger: 0.4, 
-                        ease: "power4.out"
-                    });
-                }
-            })
-        }, options);
-
-        observer.observe(target); 
+        if(media.matches) {
+            const options = {
+                root: null, 
+                threshold: 0.1
+            };
         
-        return observer;
-    }
+            let observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        gsap.to(".cards-list__item" , {
+                            x: 0, 
+                            opacity: 1, 
+                            duration: 1.4, 
+                            stagger: 0.4, 
+                            ease: "power4.out"
+                        });
+                    }
+                })
+            }, options);
+
+            observer.observe(target); 
+            
+            return observer;
+        }
 
     const options = {
         root: null, 
@@ -67,6 +67,7 @@ function animationBasedOnDevice(media, ob) {
                     x: 0, 
                     opacity: 1, 
                     duration: 1, 
+                    stagger: 0.4,
                     ease: "power4.out"
                 });
             }
@@ -83,6 +84,6 @@ media = window.matchMedia("(min-width: 50em)");
 
 observer = animationBasedOnDevice(media);
 
-x.addEventListener("change", (e) => {
+media.addEventListener("change", (e) => {
     observer = animationBasedOnDevice(e.target, observer);
 })

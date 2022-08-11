@@ -1,6 +1,6 @@
 @use "../abstracts" as ab;
 
-.causes {
+.cards {
     // outline: 2px solid coral;
     width: min(90%, 110rem);
     margin-inline: auto;
@@ -17,23 +17,26 @@
 
     &-list {
         // outline: 2px solid lightblue;
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        // flex-direction: column;
         gap: 3em;
         padding-block: 2em;
 
         @include ab.screen-50 {
-            flex-direction: row;
-            gap: 0.6em;
+            // flex-direction: row;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2em;
 
             padding-block: 2.5em;
         }
 
         @include ab.screen-62 {
+            // grid-template-columns: repeat(3, 1fr);
             gap: 0.8em;
         }
 
         @include ab.screen-73 {
+            grid-template-columns: repeat(3, 1fr);
             gap: 2em;
         }
 
@@ -66,10 +69,11 @@
 
             @include ab.screen-73 {
                 padding-inline: 1.8em;
-                padding-block: 1.4em 0.7em;
+                padding-block: 1.4em;
             }
 
             &-image {
+                border-radius: 0.4em;
 
                 @include ab.screen-50 {
                     object-fit: contain;
