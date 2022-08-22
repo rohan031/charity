@@ -42,7 +42,7 @@ function animationBasedOnDevice(media, ob) {
                             x: 0, 
                             opacity: 1, 
                             duration: 1.4, 
-                            stagger: 0.4, 
+                            stagger: 0.3, 
                             ease: "power4.out"
                         });
                     }

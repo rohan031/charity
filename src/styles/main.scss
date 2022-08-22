@@ -1,33 +1,35 @@
 @use "./abstracts" as ab;
 @use "./components";
 
-
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: ab.$background-primary;
-    color: ab.$text-primary;
+	font-family: "Poppins", sans-serif;
+	background-color: ab.$background-primary;
+	color: ab.$text-primary;
 }
 
 .wrapper {
-    position: relative;
-    height: 100vh;
-    overflow-x: hidden;
+	position: relative;
+	height: 100vh;
+	overflow-x: hidden;
 
-    &.open {
-        overflow-y: hidden;
+	&.open {
+		overflow-y: hidden;
 
-        @include ab.screen-40 {
-            overflow-y: scroll;
-        }
-    }
+		@include ab.screen-40 {
+			overflow-y: scroll;
+		}
+	}
 }
 
-
 .title {
-    color: ab.$text-logo;
+	color: ab.$text-logo;
 }
 
 .main {
-    padding-block: 1em 4;
+	padding-block: 1em 4;
 }
 
+.address-type {
+	font-style: italic;
+	font-size: 0.9rem;
+}
