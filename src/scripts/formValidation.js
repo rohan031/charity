@@ -35,6 +35,10 @@ const title = document.querySelector("#title");
 
 const proceed = document.querySelector(".proceed");
 
+const review = document.querySelector(".review-details");
+const donation = document.querySelector(".donation");
+const loader = document.querySelector(".loader");
+
 terms.addEventListener("change", (e) => {
 	if (e.target.checked) {
 		termsError.innerHTML = "";
@@ -46,8 +50,12 @@ const emailValidation = () => {
 
 	if (email.value.trim().match(mailFormat)) {
 		emailError.innerHTML = "";
+
+		return false;
 	} else {
 		emailError.innerHTML = "This is an invalid email!";
+
+		return true;
 	}
 };
 
@@ -56,8 +64,12 @@ const phoneNumberValidation = () => {
 
 	if (phoneNumber.value.trim().match(mailFormat)) {
 		phoneNumberError.innerHTML = "";
+
+		return false;
 	} else {
 		phoneNumberError.innerHTML = "Enter a valid phone number!";
+
+		return true;
 	}
 };
 
@@ -66,8 +78,12 @@ const pinCodeValidation = () => {
 
 	if (pincode.value.trim().match(mailFormat)) {
 		pincodeError.innerHTML = "";
+
+		return false;
 	} else {
 		pincodeError.innerHTML = "Enter a valid PIN code!";
+
+		return true;
 	}
 };
 
@@ -76,8 +92,12 @@ const amountValidation = () => {
 
 	if (amount.value.trim().match(amountFormat)) {
 		amountError.innerHTML = "";
+
+		return false;
 	} else {
 		amountError.innerHTML = "Donation amount should be in number";
+
+		return true;
 	}
 };
 
@@ -86,8 +106,10 @@ const panValidation = () => {
 
 	if (panNumber.value.trim().match(panNumberFormat)) {
 		panNumberError.innerHTML = "";
+		return false;
 	} else {
 		panNumberError.innerHTML = "Invalid PAN number!";
+		return true;
 	}
 };
 
@@ -116,7 +138,7 @@ const validateUserInputs = () => {
 		emailError.innerHTML = "Email is required to proceed!";
 	} else {
 		emailError.innerHTML = "";
-		emailValidation();
+		bool = emailValidation();
 	}
 
 	if (phoneNumber.value.trim() === "" || phoneNumber.value === null) {
@@ -125,7 +147,7 @@ const validateUserInputs = () => {
 		phoneNumberError.innerHTML = "Phone number is required to proceed!";
 	} else {
 		phoneNumberError.innerHTML = "";
-		phoneNumberValidation();
+		bool = phoneNumberValidation();
 	}
 
 	if (inputState.value.trim() === "" || inputState.value === null) {
@@ -150,7 +172,7 @@ const validateUserInputs = () => {
 		pincodeError.innerHTML = "PIN code is required to proceed!";
 	} else {
 		pincodeError.innerHTML = "";
-		pinCodeValidation();
+		bool = pinCodeValidation();
 	}
 
 	if (address.value.trim() === "" || address.value === null) {
@@ -167,7 +189,7 @@ const validateUserInputs = () => {
 		amountError.innerHTML = "Please enter the amount you want to donate!";
 	} else {
 		amountError.innerHTML = "";
-		amountValidation();
+		bool = amountValidation();
 	}
 
 	if (panNumber.value.trim() === "" || panNumber.value === null) {
@@ -176,14 +198,11 @@ const validateUserInputs = () => {
 		panNumberError.innerHTML = "Your PAN number is required to proceed!";
 	} else {
 		panNumberError.innerHTML = "";
-		panValidation();
+		bool = panValidation();
 	}
 
 	return bool;
 };
-
-const review = document.querySelector(".review-details");
-const donation = document.querySelector(".donation");
 
 const displayDetails = (userInputs) => {
 	const values = document.querySelectorAll(".review-details-wrapper__value-p");
@@ -195,8 +214,31 @@ const displayDetails = (userInputs) => {
 		i++;
 	}
 
-	donation.style.display = "none";
-	review.style.display = "block";
+	// adding loader
+	loader.style.display = "flex";
+	wrapper.classList.add("loading");
+
+	setTimeout(() => {
+		donation.style.display = "none";
+
+		// removing loader
+		loader.style.display = "none";
+		wrapper.classList.remove("loading");
+
+		review.style.display = "block";
+	}, 500);
+};
+
+let userInputs = {
+	name: "",
+	email: "",
+	phoneNumber: "",
+	state: "",
+	district: "",
+	pinCode: "",
+	address: "",
+	amount: "",
+	panNumber: "",
 };
 
 proceed.addEventListener("click", (event) => {
@@ -215,7 +257,7 @@ proceed.addEventListener("click", (event) => {
 	const fullName =
 		title.value + " " + firstName.value.trim() + " " + lastName.value.trim();
 
-	let userInputs = {
+	userInputs = {
 		name: fullName,
 		email: email.value.trim(),
 		phoneNumber: "+91 " + phoneNumber.value.trim(),
@@ -223,7 +265,7 @@ proceed.addEventListener("click", (event) => {
 		district: inputDistrict.value,
 		pinCode: pincode.value,
 		address: address.value,
-		amount: +amount.value,
+		amount: "₹ " + +amount.value,
 		panNumber: panNumber.value.trim(),
 	};
 
@@ -231,8 +273,26 @@ proceed.addEventListener("click", (event) => {
 });
 
 const previous = document.querySelector(".previous-review");
+const proceedReview = document.querySelector(".proceed-review");
 
 previous.addEventListener("click", () => {
-	review.style.display = "none";
-	donation.style.display = "block";
+	// adding loader
+	loader.style.display = "flex";
+	wrapper.classList.add("loading");
+
+	setTimeout(() => {
+		review.style.display = "none";
+
+		// removing loader
+		loader.style.display = "none";
+		wrapper.classList.remove("loading");
+
+		donation.style.display = "block";
+	}, 500);
+});
+
+proceedReview.addEventListener("click", () => {
+	// add code for donation link and saving user info to db
+	// access userinfo using userInputs object at line 232
+	// after proceeding from donation form all details will be there in the object
 });
