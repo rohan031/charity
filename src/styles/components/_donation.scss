@@ -28,6 +28,12 @@
 		}
 	}
 
+	.input-error {
+		color: ab.$error;
+		padding-inline: 0.3em;
+		padding-top: 0.4em;
+	}
+
 	&-form {
 		display: flex;
 		flex-direction: column;
@@ -37,6 +43,14 @@
 			font-size: 1.2rem;
 			font-weight: 500;
 			cursor: pointer;
+			text-decoration: underline transparent;
+			max-width: 5rem;
+			transition: color 0.3s, text-decoration-color 0.3s;
+
+			&:hover {
+				color: ab.$text-logo;
+				text-decoration-color: ab.$text-logo;
+			}
 		}
 
 		@include ab.screen-40 {
@@ -81,12 +95,6 @@
 			}
 
 			@include ab.screen-50 {
-				&.form-name {
-					.donation-form__child-input {
-						width: 75%;
-					}
-				}
-
 				&.form-location {
 					flex-direction: row;
 				}
@@ -97,12 +105,6 @@
 			}
 
 			@include ab.screen-62 {
-				&.form-name {
-					.donation-form__child-input {
-						width: 60%;
-					}
-				}
-
 				&.form-contact {
 					flex-direction: row;
 				}

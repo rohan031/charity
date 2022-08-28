@@ -92,35 +92,33 @@
 							</div>
 
 							<div class="donation-form__child-input">
-								<label for="name">Name</label>
-								<input
-									type="text"
-									id="name"
-									placeholder="Full Name..."
-									required
-								/>
+								<label for="firstName">First name</label>
+								<input type="text" id="firstName" placeholder="First Name..." />
+								<p class="input-error" id="input-error-firstName"></p>
+							</div>
+
+							<div class="donation-form__child-input">
+								<label for="lastName">Last name</label>
+								<input type="text" id="lastName" placeholder="Last Name..." />
+								<p class="input-error" id="input-error-lastName"></p>
 							</div>
 						</div>
 
 						<div class="donation-form__child form-contact">
 							<div class="donation-form__child-input">
 								<label for="email">Email</label>
-								<input
-									type="email"
-									id="email"
-									placeholder="Email..."
-									required
-								/>
+								<input type="text" id="email" placeholder="Email..." />
+								<p class="input-error" id="input-error-email"></p>
 							</div>
 
 							<div class="donation-form__child-input">
-								<label for="number">Phone Number</label>
+								<label for="phoneNumber">Phone Number</label>
 								<input
 									type="text"
-									id="number"
+									id="phoneNumber"
 									placeholder="Phone Number..."
-									required
 								/>
+								<p class="input-error" id="input-error-phoneNumber"></p>
 							</div>
 						</div>
 
@@ -128,7 +126,7 @@
 							<div class="form-location__select">
 								<div class="donation-form__child-select">
 									<label for="inputState">State</label>
-									<select id="inputState" required>
+									<select id="inputState">
 										<option value="">Select State</option>
 										<option value="Andra Pradesh">Andra Pradesh</option>
 										<option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -177,62 +175,50 @@
 										<option value="Lakshadeep">Lakshadeep</option>
 										<option value="Pondicherry">Pondicherry</option>
 									</select>
+									<p class="input-error" id="input-error-inputState"></p>
 								</div>
 
 								<div class="donation-form__child-select">
 									<label for="inputDistrict">District</label>
-									<select id="inputDistrict" required>
+									<select id="inputDistrict">
 										<option value="">-- select one --</option>
 									</select>
+									<p class="input-error" id="input-error-inputDistrict"></p>
 								</div>
 							</div>
 
 							<div class="donation-form__child-input">
 								<label for="pincode">PIN Code</label>
-								<input
-									type="text"
-									id="pincode"
-									placeholder="PIN Code..."
-									required
-								/>
+								<input type="text" id="pincode" placeholder="PIN Code..." />
+								<p class="input-error" id="input-error-pincode"></p>
 							</div>
 						</div>
 
 						<div class="donation-form__child-input form-address">
 							<label for="address">Address</label>
-							<textarea
-								id="address"
-								placeholder="Address..."
-								required
-							></textarea>
+							<textarea id="address" placeholder="Address..."></textarea>
+							<p class="input-error" id="input-error-address"></p>
 						</div>
 
 						<div class="donation-form__child form-personal">
 							<div class="donation-form__child-input">
 								<label for="amount">Amount</label>
-								<input
-									type="text"
-									id="amount"
-									placeholder="Amount..."
-									required
-								/>
+								<input type="text" id="amount" placeholder="Amount..." />
+								<p class="input-error" id="input-error-amount"></p>
 							</div>
 
 							<div class="donation-form__child-input">
 								<label for="panNumber">PAN Number</label>
-								<input
-									type="text"
-									id="panNumber"
-									placeholder="PAN Number..."
-									required
-								/>
+								<input type="text" id="panNumber" placeholder="PAN Number..." />
+								<p class="input-error" id="input-error-panNumber"></p>
 							</div>
 						</div>
 
 						<div class="donation-form__child form-terms">
 							<div class="donation-form__child-terms">
-								<input type="checkbox" id="terms" required />
+								<input type="checkbox" id="terms" />
 								<label for="terms">I agree to all terms and condition.</label>
+								<p class="input-error" id="input-error-terms"></p>
 							</div>
 
 							<div class="donation-form__child-button">
@@ -244,7 +230,70 @@
 			</div>
 
 			<!-- review details -->
-			<div class="review-details"></div>
+			<div class="review-details">
+				<h2 class="review-details-head">Review your details</h2>
+
+				<div class="review-details-wrapper">
+					<div class="review-details-wrapper__value">
+						<h3 class="review-details-wrapper__value-title">Name:</h3>
+
+						<p class="review-details-wrapper__value-p"></p>
+					</div>
+
+					<div class="review-details-wrapper__value">
+						<h3 class="review-details-wrapper__value-title">Email:</h3>
+
+						<p class="review-details-wrapper__value-p"></p>
+					</div>
+
+					<div class="review-details-wrapper__value">
+						<h3 class="review-details-wrapper__value-title">Phone Number:</h3>
+
+						<p class="review-details-wrapper__value-p"></p>
+					</div>
+
+					<div class="review-details-wrapper__value">
+						<h3 class="review-details-wrapper__value-title">State:</h3>
+
+						<p class="review-details-wrapper__value-p"></p>
+					</div>
+
+					<div class="review-details-wrapper__value">
+						<h3 class="review-details-wrapper__value-title">District:</h3>
+
+						<p class="review-details-wrapper__value-p"></p>
+					</div>
+
+					<div class="review-details-wrapper__value">
+						<h3 class="review-details-wrapper__value-title">PIN code:</h3>
+
+						<p class="review-details-wrapper__value-p"></p>
+					</div>
+
+					<div class="review-details-wrapper__value">
+						<h3 class="review-details-wrapper__value-title">Address:</h3>
+
+						<p class="review-details-wrapper__value-p"></p>
+					</div>
+
+					<div class="review-details-wrapper__value">
+						<h3 class="review-details-wrapper__value-title">Amount:</h3>
+
+						<p class="review-details-wrapper__value-p"></p>
+					</div>
+
+					<div class="review-details-wrapper__value">
+						<h3 class="review-details-wrapper__value-title">PAN Number:</h3>
+
+						<p class="review-details-wrapper__value-p"></p>
+					</div>
+
+					<div class="review-details-wrapper__value">
+						<button class="button previous-review">Back</button>
+						<button class="button proceed-review">Proceed</button>
+					</div>
+				</div>
+			</div>
 
 			<!-- footer -->
 			<footer class="footer">
