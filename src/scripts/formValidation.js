@@ -51,11 +51,11 @@ const emailValidation = () => {
 	if (email.value.trim().match(mailFormat)) {
 		emailError.innerHTML = "";
 
-		return false;
+		return true;
 	} else {
 		emailError.innerHTML = "This is an invalid email!";
 
-		return true;
+		return false;
 	}
 };
 
@@ -65,11 +65,11 @@ const phoneNumberValidation = () => {
 	if (phoneNumber.value.trim().match(mailFormat)) {
 		phoneNumberError.innerHTML = "";
 
-		return false;
+		return true;
 	} else {
 		phoneNumberError.innerHTML = "Enter a valid phone number!";
 
-		return true;
+		return false;
 	}
 };
 
@@ -79,11 +79,11 @@ const pinCodeValidation = () => {
 	if (pincode.value.trim().match(mailFormat)) {
 		pincodeError.innerHTML = "";
 
-		return false;
+		return true;
 	} else {
 		pincodeError.innerHTML = "Enter a valid PIN code!";
 
-		return true;
+		return false;
 	}
 };
 
@@ -93,11 +93,11 @@ const amountValidation = () => {
 	if (amount.value.trim().match(amountFormat)) {
 		amountError.innerHTML = "";
 
-		return false;
+		return true;
 	} else {
 		amountError.innerHTML = "Donation amount should be in number";
 
-		return true;
+		return false;
 	}
 };
 
@@ -106,10 +106,10 @@ const panValidation = () => {
 
 	if (panNumber.value.trim().match(panNumberFormat)) {
 		panNumberError.innerHTML = "";
-		return false;
+		return true;
 	} else {
 		panNumberError.innerHTML = "Invalid PAN number!";
-		return true;
+		return false;
 	}
 };
 
@@ -138,7 +138,7 @@ const validateUserInputs = () => {
 		emailError.innerHTML = "Email is required to proceed!";
 	} else {
 		emailError.innerHTML = "";
-		bool = emailValidation();
+		if (!emailValidation()) bool = true;
 	}
 
 	if (phoneNumber.value.trim() === "" || phoneNumber.value === null) {
@@ -147,7 +147,7 @@ const validateUserInputs = () => {
 		phoneNumberError.innerHTML = "Phone number is required to proceed!";
 	} else {
 		phoneNumberError.innerHTML = "";
-		bool = phoneNumberValidation();
+		if (!phoneNumberValidation()) bool = true;
 	}
 
 	if (inputState.value.trim() === "" || inputState.value === null) {
@@ -172,7 +172,7 @@ const validateUserInputs = () => {
 		pincodeError.innerHTML = "PIN code is required to proceed!";
 	} else {
 		pincodeError.innerHTML = "";
-		bool = pinCodeValidation();
+		if (!pinCodeValidation()) bool = true;
 	}
 
 	if (address.value.trim() === "" || address.value === null) {
@@ -189,7 +189,7 @@ const validateUserInputs = () => {
 		amountError.innerHTML = "Please enter the amount you want to donate!";
 	} else {
 		amountError.innerHTML = "";
-		bool = amountValidation();
+		if (!amountValidation()) bool = true;
 	}
 
 	if (panNumber.value.trim() === "" || panNumber.value === null) {
@@ -198,7 +198,7 @@ const validateUserInputs = () => {
 		panNumberError.innerHTML = "Your PAN number is required to proceed!";
 	} else {
 		panNumberError.innerHTML = "";
-		bool = panValidation();
+		if (!panValidation()) bool = true;
 	}
 
 	return bool;
