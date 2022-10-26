@@ -1,43 +1,43 @@
-const firstName = document.querySelector("#firstName");
-const firstNameError = document.querySelector("#input-error-firstName");
+const firstName = selectElement("#firstName");
+const firstNameError = selectElement("#input-error-firstName");
 
-const lastName = document.querySelector("#lastName");
-const lastNameError = document.querySelector("#input-error-lastName");
+const lastName = selectElement("#lastName");
+const lastNameError = selectElement("#input-error-lastName");
 
-const email = document.querySelector("#email");
-const emailError = document.querySelector("#input-error-email");
+const email = selectElement("#email");
+const emailError = selectElement("#input-error-email");
 
-const phoneNumber = document.querySelector("#phoneNumber");
-const phoneNumberError = document.querySelector("#input-error-phoneNumber");
+const phoneNumber = selectElement("#phoneNumber");
+const phoneNumberError = selectElement("#input-error-phoneNumber");
 
-const inputState = document.querySelector("#inputState");
-const inputStateError = document.querySelector("#input-error-inputState");
+const inputState = selectElement("#inputState");
+const inputStateError = selectElement("#input-error-inputState");
 
-const inputDistrict = document.querySelector("#inputDistrict");
-const inputDistrictError = document.querySelector("#input-error-inputDistrict");
+const inputDistrict = selectElement("#inputDistrict");
+const inputDistrictError = selectElement("#input-error-inputDistrict");
 
-const pincode = document.querySelector("#pincode");
-const pincodeError = document.querySelector("#input-error-pincode");
+const pincode = selectElement("#pincode");
+const pincodeError = selectElement("#input-error-pincode");
 
-const address = document.querySelector("#address");
-const addressError = document.querySelector("#input-error-address");
+const address = selectElement("#address");
+const addressError = selectElement("#input-error-address");
 
-const amount = document.querySelector("#amount");
-const amountError = document.querySelector("#input-error-amount");
+const amount = selectElement("#amount");
+const amountError = selectElement("#input-error-amount");
 
-const panNumber = document.querySelector("#panNumber");
-const panNumberError = document.querySelector("#input-error-panNumber");
+const panNumber = selectElement("#panNumber");
+const panNumberError = selectElement("#input-error-panNumber");
 
-const terms = document.querySelector("#terms");
-const termsError = document.querySelector("#input-error-terms");
+const terms = selectElement("#terms");
+const termsError = selectElement("#input-error-terms");
 
-const title = document.querySelector("#title");
+const title = selectElement("#title");
 
-const proceed = document.querySelector(".proceed");
+const proceed = selectElement(".proceed");
 
-const review = document.querySelector(".review-details");
-const donation = document.querySelector(".donation");
-const loader = document.querySelector(".loader");
+const review = selectElement(".review-details");
+const donation = selectElement(".donation");
+const loader = selectElement(".loader");
 
 terms.addEventListener("change", (e) => {
 	if (e.target.checked) {
@@ -205,7 +205,7 @@ const validateUserInputs = () => {
 };
 
 const displayDetails = (userInputs) => {
-	const values = document.querySelectorAll(".review-details-wrapper__value-p");
+	const values = selectElementAll(".review-details-wrapper__value-p");
 
 	let i = 0;
 
@@ -272,8 +272,8 @@ proceed.addEventListener("click", (event) => {
 	displayDetails(userInputs);
 });
 
-const previous = document.querySelector(".previous-review");
-const proceedReview = document.querySelector(".proceed-review");
+const previous = selectElement(".previous-review");
+const proceedReview = selectElement(".proceed-review");
 
 previous.addEventListener("click", () => {
 	// adding loader

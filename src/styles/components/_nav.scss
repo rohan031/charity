@@ -1,163 +1,161 @@
 @use "../abstracts" as ab;
 
 .nav {
-    display: flex;
-    align-items: center;
-    width: min(95%, 111rem);
-    margin-inline: auto;
-    padding-block: 1em 0.5em;
-    padding-inline: 0.6em;
-    
+	display: flex;
+	align-items: center;
+	width: min(95%, 111rem);
+	margin-inline: auto;
+	padding-block: 1em 0.5em;
+	padding-inline: 0.6em;
 
-    margin-bottom: 1em;
+	margin-bottom: 1em;
 
-    @include ab.screen-50 {
-        margin-bottom: 3em;
-    }
+	@include ab.screen-50 {
+		margin-bottom: 3em;
+	}
 
-    &-title {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5em;
+	&-title {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5em;
 
-        @include ab.screen-40 {
-            gap: 1.2em;
-        }
+		@include ab.screen-40 {
+			gap: 1.2em;
+		}
 
-        img {
-            width: 5rem;
-            position: relative;
-            z-index: 2;
-    
-            @include ab.screen-40 {
-                width: 6rem;
-            }
-        }
-    }
-    
+		img {
+			width: 5rem;
+			position: relative;
+			z-index: 2;
 
-    &-links {
-        margin-left: auto;
-        padding-block: 0;
+			@include ab.screen-40 {
+				width: 6rem;
+			}
+		}
+	}
 
-        label {
-            color: ab.$text-logo;
-            font-size: 2.2rem;
-            cursor: pointer;
-            position: relative;
-            z-index: 2;
+	&-links {
+		margin-left: auto;
+		padding-block: 0;
 
-            @include ab.screen-40{
-                display: none;
-            }
-        }
+		label {
+			color: ab.$text-logo;
+			font-size: 2.2rem;
+			cursor: pointer;
+			position: relative;
+			z-index: 2;
 
-        input[type="checkbox"] {
-            display: none;
+			@include ab.screen-40 {
+				display: none;
+			}
+		}
 
-            &:checked + ul {
-                clip-path: inset(0);
-            }
-        } 
-        
-        &__ul {
-            position: absolute;
-            list-style: none;
-            padding: 0;
-            background-color: ab.$background-secondary;
-            color: ab.$text-secondary;
-            left: 0;
-            right: 0;
-            top: -5%;
-            z-index: 1;
-            
-            height: calc(100vh + 5%);
+		input[type="checkbox"] {
+			display: none;
 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 3em;
+			&:checked + ul {
+				clip-path: inset(0);
+			}
+		}
 
-            clip-path: inset(0 0 0 100%);
-            transition: clip-path 0.4s;
+		&__ul {
+			position: absolute;
+			list-style: none;
+			padding: 0;
+			background-color: ab.$background-secondary;
+			color: ab.$text-secondary;
+			left: 0;
+			right: 0;
+			top: -5%;
+			z-index: 1;
 
-            @include ab.screen-40 {
-                position: static;
-                background-color: inherit;
-                flex-direction: row;
-                padding-block: 0.4em;
-                clip-path: inset(0);
-                padding-inline: 0.4em;
-                height: auto;
-                gap: 1.2em;
-            }
+			height: calc(100vh + 5%);
 
-            @include ab.screen-50 {
-                gap: 1.4em;
-            }
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			gap: 3em;
 
-            @include ab.screen-62 {
-                gap: 3em;
-            }
+			clip-path: inset(0 0 0 100%);
+			transition: clip-path 0.4s;
 
-            &-link {
-                color: inherit;
-                user-select: none;
+			@include ab.screen-40 {
+				position: static;
+				background-color: inherit;
+				flex-direction: row;
+				padding-block: 0.4em;
+				clip-path: inset(0);
+				padding-inline: 0.4em;
+				height: auto;
+				gap: 1.2em;
+			}
 
-                a {
-                    color: inherit;
-                    text-decoration: underline transparent;
-                    font-size: 1.5rem;
-                    transition: color 0.3s, text-decoration 0.3s;
-                    user-select: none;
+			@include ab.screen-50 {
+				gap: 1.4em;
+			}
 
-                    @include ab.screen-40 {
-                        font-size: 0.9rem;
-                    }
+			@include ab.screen-62 {
+				gap: 3em;
+			}
 
-                    @include ab.screen-50 {
-                        font-size: 1.1rem;
-                    }
+			&-link {
+				color: inherit;
+				user-select: none;
+				text-align: center;
 
-                    @include ab.screen-62 {
-                        font-size: 1.3rem;
-                    }
+				a {
+					color: inherit;
+					text-decoration: underline transparent;
+					font-size: 1.5rem;
+					transition: color 0.3s, text-decoration 0.3s;
+					user-select: none;
 
-                    &:hover {
-                        text-decoration-color: ab.$button-background;
-                        color: ab.$button-background;
+					@include ab.screen-40 {
+						font-size: 0.9rem;
+					}
 
-                    }
+					@include ab.screen-50 {
+						font-size: 1.1rem;
+					}
 
-                    &:active {
-                        color: ab.$text-logo;
-                        text-decoration: ab.$text-logo;
-                    }
+					@include ab.screen-62 {
+						font-size: 1.3rem;
+					}
 
-                    &.active {
-                        text-decoration-color: ab.$button-background;
-                        color: ab.$button-background;
-                    }
-                }
-            }
+					&:hover {
+						text-decoration-color: ab.$button-background;
+						color: ab.$button-background;
+					}
 
-            &-button {
-                user-select: none;
+					&:active {
+						color: ab.$text-logo;
+						text-decoration: ab.$text-logo;
+					}
 
-                a {
-                    font-size: 1.5rem;
-                    user-select: none;
+					&.active {
+						text-decoration-color: ab.$button-background;
+						color: ab.$button-background;
+					}
+				}
+			}
 
-                    @include ab.screen-40 {
-                        font-size: 1rem;
-                    }
+			&-button {
+				user-select: none;
 
-                    @include ab.screen-50 {
-                        font-size: 1.3rem;
-                    }
-                }
-            }
-        }
-    }
+				a {
+					font-size: 1.5rem;
+					user-select: none;
+
+					@include ab.screen-40 {
+						font-size: 1rem;
+					}
+
+					@include ab.screen-50 {
+						font-size: 1.3rem;
+					}
+				}
+			}
+		}
+	}
 }
