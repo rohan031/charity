@@ -37,6 +37,9 @@
 		<script src="./scripts/index.js" defer></script>
 		<script src="./scripts/animation.js" defer></script>
         <script src="./scripts/gallery.js" defer></script>
+
+		<!-- logo titlebar -->
+		<link rel="shortcut icon" href="../assets/images/logo1.png" type="image/x-icon">
 	<body>
 		
 
@@ -82,7 +85,7 @@
 				</div>
 			</nav>
 
-			<div class="loader">
+			<div class="loader gallery">
 				<div class="loader-child"></div>
 			</div>
 
@@ -91,6 +94,11 @@
 				<h2 class="image-loading">Please wait while we fetch images. :)</h2>
 			</div>
 			
+			<div class="image-modal">
+				<span class="image-modal__close">&times;</span>
+
+				<img class="image-modal__content">
+			</div>
 
 			<!-- footer -->
 			<footer class="footer">
