@@ -34,8 +34,17 @@
 
 		&__value {
 			display: flex;
-			gap: 1em;
-			align-items: center;
+			gap: 0.3em;
+			flex-direction: column;
+
+			@include ab.screen-40 {
+				flex-direction: row;
+				gap: 1em;
+			}
+
+			&-p {
+				word-break: break-all;
+			}
 
 			.proceed-review {
 				font-size: 1.1rem;
@@ -74,4 +83,9 @@
 			}
 		}
 	}
+}
+
+.button-wrapper {
+	margin-top: 1em;
+	gap: 1em;
 }

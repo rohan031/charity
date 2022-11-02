@@ -205,7 +205,7 @@ const validateUserInputs = () => {
 };
 
 const displayDetails = (userInputs) => {
-	const values = selectElementAll(".review-details-wrapper__value-p");
+	const values = document.querySelectorAll(".review-details-wrapper__value-p");
 
 	let i = 0;
 
