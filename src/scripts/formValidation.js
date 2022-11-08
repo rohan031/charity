@@ -39,6 +39,19 @@ const review = selectElement(".review-details");
 const donation = selectElement(".donation");
 const loader = selectElement(".loader");
 
+const inputElements = [
+	firstName,
+	lastName,
+	email,
+	phoneNumber,
+	inputState,
+	inputDistrict,
+	pincode,
+	address,
+	amount,
+	panNumber,
+];
+
 terms.addEventListener("change", (e) => {
 	if (e.target.checked) {
 		termsError.innerHTML = "";
@@ -210,7 +223,9 @@ const displayDetails = (userInputs) => {
 	let i = 0;
 
 	for (const prop in userInputs) {
-		values[i].innerHTML = userInputs[prop];
+		if (i < 9) {
+			values[i].innerHTML = userInputs[prop];
+		}
 		i++;
 	}
 
@@ -237,8 +252,9 @@ let userInputs = {
 	district: "",
 	pinCode: "",
 	address: "",
-	amount: "",
+	amountFormatting: "",
 	panNumber: "",
+	amount: "",
 };
 
 proceed.addEventListener("click", (event) => {
@@ -265,12 +281,23 @@ proceed.addEventListener("click", (event) => {
 		district: inputDistrict.value,
 		pinCode: pincode.value,
 		address: address.value,
-		amount: "₹ " + +amount.value,
+		amountFormatting: "₹ " + +amount.value,
 		panNumber: panNumber.value.trim(),
+		amount: +amount.value,
 	};
 
 	displayDetails(userInputs);
 });
+
+// inputElements.forEach((element) => {
+// 	element.addEventListener("change", (e) => {
+// 		validateUserInputs();
+// 	});
+
+// 	element.addEventListener("input", (e) => {
+// 		validateUserInputs();
+// 	});
+// });
 
 const previous = selectElement(".previous-review");
 const proceedReview = selectElement(".proceed-review");
@@ -293,6 +320,60 @@ previous.addEventListener("click", () => {
 
 proceedReview.addEventListener("click", () => {
 	// add code for donation link and saving user info to db
-	// access userinfo using userInputs object at line 232
+	// access userinfo using userInputs object at line 245
 	// after proceeding from donation form all details will be there in the object
+
+	loader.style.display = "flex";
+	wrapper.classList.add("loading");
+
+	const options = {
+		method: "POST",
+		headers: {
+			Accept: "application/json",
+			"Content-Type": "application/json;charset=UTF-8",
+		},
+		body: JSON.stringify(userInputs),
+	};
+
+	fetch("/paynow", options)
+		.then((res) => res.json())
+		.then((res) => {
+			const initPaytmObj = JSON.parse(res.response);
+			const txntoken = initPaytmObj.body.txnToken;
+			const orderId = res.orderId;
+
+			var config = {
+				root: "",
+				flow: "DEFAULT",
+				data: {
+					orderId: orderId /* update order id */,
+					token: txntoken /* update token value */,
+					tokenType: "TXN_TOKEN",
+					amount: userInputs.amount /* update amount */,
+				},
+				handler: {
+					notifyMerchant: function (eventName, data) {
+						console.log("notifyMerchant handler function called");
+						console.log("eventName => ", eventName);
+						console.log("data => ", data);
+					},
+				},
+				redirect: false,
+			};
+
+			if (window.Paytm && window.Paytm.CheckoutJS) {
+				// initialze configuration using init method
+				window.Paytm.CheckoutJS.init(config)
+					.then(function onSuccess() {
+						// after successfully updating configuration, invoke JS Checkout
+						loader.style.display = "none";
+						wrapper.classList.remove("loading");
+						window.Paytm.CheckoutJS.invoke();
+					})
+					.catch(function onError(error) {
+						console.log("error => ", error);
+					});
+			}
+		})
+		.catch((err) => console.log(err));
 });
